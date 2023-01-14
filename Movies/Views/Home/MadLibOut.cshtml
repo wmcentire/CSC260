@@ -1,0 +1,116 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    //@ symbols are represented by (at) in comments
+}
+<!--
+//(at)if (!string.IsNullOrEmpty(ViewBag.VFN)){
+    <h2>Name: (at)ViewBag.VFN</h2>
+}else{
+    <div class="makered">
+        <h4>No Input!!!!! :(</h4>
+    </div>
+    }
+}-->
+<h1>
+    Read it out!
+</h1>
+<div>
+    <div class="row">
+        <div class="col">
+            @if (!string.IsNullOrEmpty(ViewBag.VN1))
+            {
+                <p>
+                    Kevin went to the store to buy some <b>@ViewBag.VN1</b>.
+                </p>
+            
+            }
+            else
+            {
+                <p>
+                    Kevin went to the store to buy some <b>NO INPUT</b>.
+                </p>
+            }
+        </div>
+        <div class="col">
+            @if (!string.IsNullOrEmpty(ViewBag.VA1))
+            {
+                <p>
+                    When he got there, the <b>@ViewBag.VA1</b> clerk told him they were all out.
+                </p>
+            }
+            else
+            {
+                <p>
+                    When he got there, the <b>NO INPUT</b> clerk told him they were all out.
+                </p>
+            }
+            
+        </div>
+        <div class="col">
+            @if (!string.IsNullOrEmpty(ViewBag.VA2) || !string.IsNullOrEmpty(ViewBag.VV1))
+            {
+                <p>
+                    Kevin was <b>@ViewBag.VA2</b> and <b>@ViewBag.VV1</b> home.
+                </p>
+            }
+            else
+            {
+                <p>
+                    Kevin was <b>NO INPUT</b> and <b>NO INPUT</b> home.
+                </p>
+            }
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            @if (!string.IsNullOrEmpty(ViewBag.VD1) || !string.IsNullOrEmpty(ViewBag.VN2))
+            {
+                <p>
+                    He <b>@ViewBag.VD1</b> on his <b>@ViewBag.VN2</b>,
+                </p>
+            }
+            else
+            {
+                <p>
+                    He <b>NO INPUT</b> on his <b>NO INPUT</b>,
+                </p>
+            }
+            
+        </div>
+        <div class="col">
+            @if (!string.IsNullOrEmpty(ViewBag.VA3))
+            {
+                <p>
+                    wishing he had gotten to the store <b>@ViewBag.VA3</b>.
+                </p>
+            }
+            else
+            {
+                <p>
+                    wishing he had gotten to the store <b>NO INPUT</b>
+                </p>
+            }
+            
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            
+        </div>
+        <div class="col">
+            <a class="nav-link btn btn-secondary my-2 my-sm-0" type="button" asp-controller="Home" asp-action="MadLibIn">
+                Back
+            </a>
+            <!--<button type="button" class="btn btn-secondary my-2 my-sm-0"></button>-->
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
