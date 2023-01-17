@@ -9,8 +9,7 @@ else
 {
     foreach (Movie movie in Model)
     {
-        <!--<h3>@movie.ToString()</h3>-->
-
-        <partial name="_MoviePartialView.cshtml" for="@movie" />
+        @*<h3>@movie.ToString()</h3>*@
+        <partial name="_MoviePartialView.cshtml" for="@movie"/>
     }
 }
