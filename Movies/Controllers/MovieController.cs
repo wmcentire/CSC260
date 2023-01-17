@@ -29,3 +29,9 @@ namespace Movies.Controllers
         }
     }
 }
+
+// Lambda Expressions
+// 
+// Game onegame = lstGames.Find(x => x.ID == ID);
+// 
+// Useful!
