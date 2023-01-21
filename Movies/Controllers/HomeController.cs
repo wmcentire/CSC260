@@ -39,6 +39,13 @@ namespace Movies.Controllers
             return View();
         }
 
+        public IActionResult ParamTest(int? id)
+        {
+            return Content($"id = {id?.ToString() ?? "NULL"}");
+            // Forms will always win in a fight against route and query
+        }
+        // ?? if null do thing to the right
+
         public IActionResult Counter()
         {
             ViewBag.Count = intCount++;
@@ -50,6 +57,11 @@ namespace Movies.Controllers
         public IActionResult MadLibIn()
         {
             ViewData["Title"] = "Input Form";
+            return View();
+        }
+
+        public IActionResult GameLibrary(string[] games, DateTime[] rentDates)// take in date and videogame
+        {
             return View();
         }
 

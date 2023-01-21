@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Game>
+
+@if(Model == null){
+	<h1>No Games</h1>
+}else{
+	<div>
+		<h1>Game Library</h1>
+		@* List of Games:
+			Don't Starve Together,
+			Sea of Thieves,
+			Deep Rock Galactic,
+			Dwarf Fortress,
+			Persona 5,
+			Ultrakill,
+
+			
+		*@
+		@foreach(Game game in Model){
+			<partial name="_PartialGameView.cshtml" for="@game"/>
+		}
+	</div>
+}

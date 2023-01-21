@@ -1,0 +1,44 @@
+﻿@model Game
+
+@if(Model == null)
+{
+
+}
+else
+{
+	<div class="row-cols-2 bg-dark">
+		<div class="col">
+			<div class="border-1 border-dark">
+				<img resource="@Model.Image" />
+			</div>
+		</div>
+		<div class="col">
+			<div>
+				<h3>@Model.Title</h3>
+				<ul>
+					<li>
+						<p>$@Model.Cost</p>
+					</li>
+					<li>
+						<p></p>
+					</li>
+					<li>
+						@if(Model.Available){
+							<form asp-controller="Home" asp-action="GameLibrary">
+								<label for="name"><b>Name</b></label>
+								<input id="name" type="text" name="name" placeholder="Name" />
+								<button type="submit" class="btn btn-secondary">Counter</button>
+							</form>
+						}else{
+							<p>
+								@Model.CurrentOwner
+								@Model.CheckOutDate
+							</p>
+
+						}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+}

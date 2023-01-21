@@ -16,6 +16,24 @@
             <li><i class="bi bi-plus"></i>  Goofy Voices</li>
             <li><i class="bi bi-plus"></i>  Stealth (accidental)</li>
         </ul>
+        <br/>
+        <a asp-controller="Home" asp-action="ParamTest">Param Test Simple</a>
+        @*use asp-route-id to send id values (can be whatever the action takes)*@
+        <a asp-controller="Home" asp-action="ParamTest" asp-route-id="66">Param Route</a>
+        @*old lmao*@
+        <a href="/Home/ParamTest?id=66">Query Param</a>
+        <form asp-controller="Home" asp-action="ParamTest" method="post">
+            Enter a number: <input name="id" />
+            <button type="submit">Submit</button>
+        </form>
+
+        <form action="/Home/ParamTest/2?id=3" method="post">
+            Enter a number: <input name="id" />
+            <button type="submit">Submit</button>
+        </form>
+
+        
+
     </div>
     <div>
         <img src="~/images/dnd.jpg" width="120" height="100" />
