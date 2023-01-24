@@ -30,6 +30,8 @@ namespace GameLibrary
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            
+
             app.Run();
         }
     }

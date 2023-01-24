@@ -60,9 +60,22 @@ namespace Movies.Controllers
             return View();
         }
 
-        public IActionResult GameLibrary(string[] games, DateTime[] rentDates)// take in date and videogame
+        public IActionResult GameLibrary()// take in date and videogame
         {
             return View();
+        }
+
+        [Route("pizza/{id?}")]
+        public IActionResult RouteTest(int? id)// ta
+        {
+            //return Content("bitches");
+            return Content($"id = {id?.ToString() ?? "NULL"}");
+        }
+
+        public IActionResult Colors(string colors)// ta
+        {
+            var colorList = colors.Split("/");
+            return Content(string.Join(",",colorList));
         }
 
         public IActionResult MadLibOut(string noun1, string adjective1, string adjective2, string verb1, string adverb1, string noun2, string adjective3)

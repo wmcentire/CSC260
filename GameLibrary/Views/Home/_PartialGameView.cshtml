@@ -2,7 +2,7 @@
 
 @if(Model == null)
 {
-
+	<h3>No Game</h3>
 }
 else
 {
@@ -12,29 +12,34 @@ else
 				<img resource="@Model.Image" />
 			</div>
 		</div>
-		<div class="col">
+		<div class="col text-muted">
 			<div>
 				<h3>@Model.Title</h3>
 				<ul>
 					<li>
-						<p>$@Model.Cost</p>
+						<p>Cost - $@Model.Cost.ToString()</p>
 					</li>
 					<li>
-						<p></p>
+						<p>Rating - @Model.Rating.ToString()</p>
+					</li>
+					<li>
+						<p>Platform - @Model.Platform</p>
 					</li>
 					<li>
 						@if(Model.Available){
 							<form asp-controller="Home" asp-action="GameLibrary">
 								<label for="name"><b>Name</b></label>
 								<input id="name" type="text" name="name" placeholder="Name" />
-								<button type="submit" class="btn btn-secondary">Counter</button>
+								<button type="submit" class="btn btn-primary">Check Out</button>
 							</form>
 						}else{
-							<p>
-								@Model.CurrentOwner
-								@Model.CheckOutDate
-							</p>
-
+							<form asp-controller="Home" asp-action="GameLibrary">
+								<p>
+									Current Owner - @Model.CurrentOwner
+									Check Out Date - @Model.CheckOutDate
+								</p>
+								<button type="submit" class="btn btn-primary">Return</button>
+							</form>
 						}
 					</li>
 				</ul>
