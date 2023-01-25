@@ -11,33 +11,45 @@ namespace GameLibrary.Controllers
 
         public static List<Game> games = new List<Game> { 
             new Game("Dwarf Fortress",
-                    29.99,
+                    26.99,
                     4.5f,
-                    "~/images/dwarffortressimage.png",
-                    "Steam"),
+                    "dwarffortressimage.png",
+                    "Steam",
+                    "Colony Sim",
+                    "Not Rated"),
             new Game("Deep Rock Galactic",
                     29.99,
                     4.9f,
-                    "~/images/dwarffortressimage.png",
-                    "Steam"),
-            new Game("Persona 5",
+                    "DRG.jpg",
+                    "Steam",
+                    "FPS PvE",
+                    "Teen"),
+            new Game("Persona 5 Royal",
                     29.99,
                     4.7f,
-                    "~/images/dwarffortressimage.png",
-                    "PS4/PS5"),
+                    "persona-5-royal.jpg",
+                    "PS4/PS5",
+                    "Life Sim/JRPG",
+                    "Mature"),
             new Game("Hollow Knight",
                     15,
                     4.8f,
-                    "~/images/dwarffortressimage.png",
-                    "Steam/PS4/XBOX/Switch"),
+                    "HollowKnight.jpg",
+                    "Steam/PS4/XBOX/Switch",
+                    "Metroidvania",
+                    "E10+"),
             new Game("Slime Rancher",
                     19.99,
                     4.5f,
-                    "~/images/dwarffortressimage.png",
-                    "Steam")
+                    "Slime-Rancher-1280x640.jpg",
+                    "Steam/XBOX",
+                    "Fantasy Management",
+                    "E10+")
         
             
         };
+        private static int avb = 5;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -54,20 +66,37 @@ namespace GameLibrary.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult GameLibrary()
+        public IActionResult GameLibrary(int? id)
         {
             // games
+            Game? aGame = games.Find(game => game.Id == id);
+            if(aGame == null)
+            {
+
+            }
+            else
+            {
+                aGame.Available = true;
+                avb++;
+            }
+            
+            ViewBag.GameCount = avb;
             return View(games);
         }
         [HttpPost]
-        public IActionResult GameLibrary(int? id, string Borrower)
+        public IActionResult GameLibrary(int? id, string Borrower) //name of string has to match in the input name
         {
             DateTime time = DateTime.Now;
 
-            Game aGame = games.Find(game => game.Id == id);
+            Game? aGame = games.Find(game => game.Id == id);
+            if(aGame != null)
+            {
+                ViewBag.GameCount = --avb;
+                aGame.Available = false;
+                aGame.CurrentOwner = Borrower;
+                aGame.CheckOutDate = time;
+            }
 
-            aGame.CurrentOwner = Borrower;
-            aGame.CheckOutDate = time;
             return View(games);
         }
 

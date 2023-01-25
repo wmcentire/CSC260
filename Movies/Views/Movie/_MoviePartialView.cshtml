@@ -10,4 +10,10 @@ else
     <h3>@Model.Title</h3>
     <h3>@Model.Year</h3>
     <h3>@Model.Rating</h3>
+        <a asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mx-2">
+        <i class="bi bi-caret-right-fill"></i> Edit
+    </a>
+    <a asp-controller="Movie" asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-primary mx-2">
+        <i class="bi bi-file-x"></i> Remove
+    </a>
 }

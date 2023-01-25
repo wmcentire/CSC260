@@ -6,43 +6,42 @@
 }
 else
 {
-	<div class="row-cols-2 bg-dark">
+	<div class="row bg-dark align-items-lg-stretch">
 		<div class="col">
-			<div class="border-1 border-dark">
-				<img resource="@Model.Image" />
+			<div class="card bg-secondary mb-3" style="max-width: 40rem;">
+				<div class="card-body">
+					<img src="~/images/@Model.Image" width="300" height="240"/>
+				</div>
 			</div>
 		</div>
-		<div class="col text-muted">
-			<div>
-				<h3>@Model.Title</h3>
-				<ul>
-					<li>
-						<p>Cost - $@Model.Cost.ToString()</p>
-					</li>
-					<li>
-						<p>Rating - @Model.Rating.ToString()</p>
-					</li>
-					<li>
-						<p>Platform - @Model.Platform</p>
-					</li>
-					<li>
+		<div class="col">
+			<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+				<div class="card-header">@Model.Rating.ToString() / 5</div>
+				<div class="card-body">
+					<h4 class="card-title">@Model.Title</h4>
+					<p class="card-text">
+						Platforms - @Model.Platform<br/>
+						Cost - $@Model.Cost.ToString()<br/>
+						Genre - @Model.Genre<br/>
+						ESRB - @Model.ESRB
+					</p>
 						@if(Model.Available){
-							<form asp-controller="Home" asp-action="GameLibrary">
-								<label for="name"><b>Name</b></label>
-								<input id="name" type="text" name="name" placeholder="Name" />
+							<form asp-controller="Home" asp-route-id="@Model.Id" asp-action="GameLibrary" method="post">
+								<div>
+									<input asp-for="@Model.CurrentOwner" name="Borrower" placeholder="Name" />
+								</div>
 								<button type="submit" class="btn btn-primary">Check Out</button>
 							</form>
 						}else{
-							<form asp-controller="Home" asp-action="GameLibrary">
+							<form asp-controller="Home" asp-route-id="@Model.Id" asp-action="GameLibrary" method="get">
 								<p>
-									Current Owner - @Model.CurrentOwner
+									Current Holder - @Model.CurrentOwner <br/>
 									Check Out Date - @Model.CheckOutDate
 								</p>
 								<button type="submit" class="btn btn-primary">Return</button>
 							</form>
 						}
-					</li>
-				</ul>
+				</div>
 			</div>
 		</div>
 	</div>

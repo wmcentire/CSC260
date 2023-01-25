@@ -42,14 +42,14 @@ namespace Movies
                 pattern: "home/colors/{*colors}",
                 defaults: new { controller = "Home", action = "Colors" });
 
-            app.MapControllerRoute(
+            /*app.MapControllerRoute(
                 name: "ErrorCatcher",
                 //pattern: "pizza",
                 //pattern: "pizza{id}",
                 //pattern: "pizza/{id?}",
                 pattern: "{*anything}",
                 defaults: new { controller = "Home", action = "Error" });
-
+            */
             
 
             app.Run();
