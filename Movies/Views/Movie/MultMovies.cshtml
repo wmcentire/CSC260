@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<Movie>
 
 <h1>Movie List</h1>
+<a asp-action="Create" asp-controller="Movie" class="btn btn-outline-secondary">
+    <i class="bi bi-plus-circle-fill"></i> Add Movies
+</a>
 @if (Model == null)
 {
     <h2>No movies provided</h2>

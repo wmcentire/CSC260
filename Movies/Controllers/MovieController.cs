@@ -42,6 +42,22 @@ namespace Movies.Controllers
 
             return View(foundMovie);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Movie m)
+        {
+            if (ModelState.IsValid)
+            {
+                MovieList.Add(m);
+                TempData["success"] = "Movie " + m.Title + " added";
+                return RedirectToAction("MultMovies", "Movie");
+            }
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Edit(Movie m)
@@ -58,10 +74,10 @@ namespace Movies.Controllers
         {
             int i;
             i = MovieList.FindIndex(x => x.Id == id);
-            if(i != null)
+            if(i != -1)
             {
+                TempData["success"] = "Movie " + MovieList[i].Title + " removed";
                 MovieList.RemoveAt(i);
-
             }
             
 
