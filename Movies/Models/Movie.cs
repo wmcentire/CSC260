@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using Movies.Validators;
 namespace Movies.Models
 {
+
+    [EightiesMovieRatings]
     public class Movie
     {
         private static int nextID = 0;

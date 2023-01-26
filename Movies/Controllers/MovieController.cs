@@ -50,6 +50,10 @@ namespace Movies.Controllers
         [HttpPost]
         public IActionResult Create(Movie m)
         {
+            if (m.Title == "The Room")
+            {
+                ModelState.AddModelError("CustomError", "bro you really watched the room?");
+            }
             if (ModelState.IsValid)
             {
                 MovieList.Add(m);
