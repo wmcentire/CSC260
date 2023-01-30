@@ -31,8 +31,13 @@ namespace Routing_Exercise
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
-                name: "dotcom",
-                pattern: "localhost:7181.com",
+                name: "chicken",
+                pattern: "EatMoreChicken",
+                defaults: new { controller = "Home", action = "Chickn"});
+
+            app.MapControllerRoute(
+                name: "catchAll",
+                pattern: "{*anything}",
                 defaults: new { controller = "Home", action = "Index" });
 
             app.Run();

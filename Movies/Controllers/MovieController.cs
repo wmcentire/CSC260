@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Models;
+using Movies.Interfaces;
+using Movies.Data;
 
 namespace Movies.Controllers
 {
     public class MovieController : Controller
     {
-        private static List<Movie> MovieList = new List<Movie>
-        {
-            new Movie("Lion King",1994,4f),
-            new Movie("Trip to the Moon",1902,5f),
-            new Movie("Megamind",2010,5f),
-        };
+
+        IDataAccessLayer dal = new MovieListDAL();
 
         public IActionResult Index()
         {
@@ -19,7 +17,7 @@ namespace Movies.Controllers
 
         public IActionResult MultMovies()
         {
-            return View(MovieList);
+            return View(dal.GetMovies());
         }
 
         public IActionResult DisplayMovie()
@@ -35,7 +33,7 @@ namespace Movies.Controllers
             {
                 return NotFound();
             }
-            Movie foundMovie = MovieList.Where(m => m.Id == id).FirstOrDefault();
+            Movie foundMovie = dal.GetMovieById(id);
 
             if (foundMovie == null)
                 return NotFound();
@@ -56,7 +54,7 @@ namespace Movies.Controllers
             }
             if (ModelState.IsValid)
             {
-                MovieList.Add(m);
+                dal.AddMovie(m);
                 TempData["success"] = "Movie " + m.Title + " added";
                 return RedirectToAction("MultMovies", "Movie");
             }
@@ -67,8 +65,8 @@ namespace Movies.Controllers
         public IActionResult Edit(Movie m)
         {
             int i;
-            i = MovieList.FindIndex(x => x.Id == m.Id);
-            MovieList[i] = m;
+            //i = dal.GetMovies().FindIndex(x => x.Id == m.Id);
+            //MovieList[i] = m;
             TempData["success"] = "Movie " + m.Title + " updated";
 
             return RedirectToAction("MultMovies","Movie");
@@ -77,11 +75,11 @@ namespace Movies.Controllers
         public IActionResult Remove(int? id)
         {
             int i;
-            i = MovieList.FindIndex(x => x.Id == id);
-            if(i != -1)
+            //i = MovieList.FindIndex(x => x.Id == id);
+            //if(i != -1)
             {
-                TempData["success"] = "Movie " + MovieList[i].Title + " removed";
-                MovieList.RemoveAt(i);
+                //TempData["success"] = "Movie " + MovieList[i].Title + " removed";
+                //MovieList.RemoveAt(i);
             }
             
 
