@@ -19,19 +19,20 @@ namespace Movies.Data
 
         public void EditMovie(Movie movie)
         {
-            
+            int i;
+            i = GetMovieByMovie(movie);
+            MovieList[i] = movie;
         }
 
         public Movie GetMovieById(int? id)
         {
-            foreach(Movie movie in MovieList)
-            {
-                if(movie.Id == id)
-                {
-                    return movie;
-                }
-            }
-            return null;
+            return MovieList.Where(m=> m.Id == id).FirstOrDefault();
+            
+        }
+
+        public int GetMovieByMovie(Movie movie)
+        {
+            return MovieList.FindIndex(x => x.Id == movie.Id);
         }
 
         public IEnumerable<Movie> GetMovies()
@@ -41,7 +42,8 @@ namespace Movies.Data
 
         public void RemoveMovie(int? id)
         {
-            
+            Movie foundMovie = GetMovieById(id);
+            MovieList.Remove(foundMovie);
         }
     }
 }

@@ -64,9 +64,8 @@ namespace Movies.Controllers
         [HttpPost]
         public IActionResult Edit(Movie m)
         {
-            int i;
-            //i = dal.GetMovies().FindIndex(x => x.Id == m.Id);
-            //MovieList[i] = m;
+            //int i = dal.GetMovieByMovie(m);
+            dal.EditMovie(m);
             TempData["success"] = "Movie " + m.Title + " updated";
 
             return RedirectToAction("MultMovies","Movie");
@@ -74,16 +73,33 @@ namespace Movies.Controllers
 
         public IActionResult Remove(int? id)
         {
-            int i;
-            //i = MovieList.FindIndex(x => x.Id == id);
-            //if(i != -1)
+            if(id == null)
             {
-                //TempData["success"] = "Movie " + MovieList[i].Title + " removed";
-                //MovieList.RemoveAt(i);
+                ModelState.AddModelError("Title", "No movie there bro");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    TempData["success"] = "Movie " + dal.GetMovieById(id).Title + " removed";
+
+                    dal.RemoveMovie(id);
+                }
+                
             }
             
 
             return RedirectToAction("MultMovies", "Movie");
+        }
+
+        public IActionResult Search(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return View("MultMovies", dal.GetMovies());
+            }
+
+            return View("MultMovies", dal.GetMovies().Where(c => c.Title.ToLower().Contains(key.ToLower())));
         }
     }
 }

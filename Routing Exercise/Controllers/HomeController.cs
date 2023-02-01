@@ -22,32 +22,32 @@ namespace Routing_Exercise.Controllers
         {
             return View();
         }
-        [Route("{cowNumber}")]
+        [Route("home/{cowNumber}")]
         public IActionResult Cows(int? cowNumber)
         {
             return Content($"The cow Default Cow moos at you {cowNumber?.ToString() ?? "NULL"} times.");
         }
-        [Route("{cowNumber}/{cowName}")]
+        [Route("home/{cowNumber}/{cowName}")]
         public IActionResult Cows(int? cowNumber, string? cowName)
         {
             return Content($"The cow {cowName ?? "NULL"} moos at you {cowNumber?.ToString() ?? "NULL"} times.");
         }
-        [Route("AllCows/Gallery/{pageNum}")]
+        [Route("home/AllCows/Gallery/{pageNum}")]
         public IActionResult CowGallery(int? pageNum)
         {
             return Content($"There are {pageNum?.ToString() ?? "NULL"} cows.");
         }
-        [Route("AllCows/Gallery/{cowNumber}/page{pageNum}")]
+        [Route("home/AllCows/Gallery/{cowNumber}/page{pageNum}")]
         public IActionResult CowGallery(int? cowNumber, int? pageNum)
         {
             return Content($"There are {cowNumber?.ToString() ?? "NULL"} cows on page {pageNum?.ToString() ?? "NULL"}.");
         }
-        [Route("AllCows/Gallery/{cowNumber}/{pageNum}")]
+        [Route("home/AllCows/Gallery/{cowNumber}/{pageNum}")]
         public IActionResult CowGallery2(int? cowNumber, int? pageNum)
         {
             return Content($"There are {cowNumber?.ToString() ?? "NULL"} cows on page {pageNum?.ToString() ?? "NULL"}.");
         }
-        [Route("EatMoreChicken")]
+        [Route("home/EatMoreChicken")]
         public IActionResult Chickn()
         {
             return Redirect("https://www.chick-fil-a.com/");
