@@ -85,10 +85,7 @@ namespace Movies.Controllers
 
                     dal.RemoveMovie(id);
                 }
-                
             }
-            
-
             return RedirectToAction("MultMovies", "Movie");
         }
 
