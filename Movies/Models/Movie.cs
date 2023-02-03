@@ -6,14 +6,17 @@ namespace Movies.Models
     [EightiesMovieRatings]
     public class Movie
     {
-        private static int nextID = 0;
-        public int? Id { get; set; } = nextID++;
+        [Key]
+        public int? Id { get; set; }
+
         [Required(ErrorMessage = "RIP BOZO NO TITLE LMAO")]
-        [MaxLength(40)]
+        [MaxLength(100)]
         public string Title { get; set; }
+
         [Required(ErrorMessage = "BRO JUST ADD THE YEAR SMH")]
         [Range(1888,2023, ErrorMessage = "HEY IDIOT LOOK UP THE YEAR IT'S NOT HARD")]
         public int? Year { get; set; }
+
         [Required(ErrorMessage = "RATE THE MOVIE ALREADY DAMN")]
         [Range(0.1f,5, ErrorMessage = "ARE YOU INCAPABLE OF COUNTING????? 1-5 DUMBASS")]
         public float? Rating { get; set; }
@@ -24,7 +27,7 @@ namespace Movies.Models
 
         public Movie()
         {
-            
+            //required            
         }
         public Movie(string title, int year, float rating)
         {
