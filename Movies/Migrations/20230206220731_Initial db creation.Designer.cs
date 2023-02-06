@@ -12,7 +12,7 @@ using Movies.Data;
 namespace Movies.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230202221944_Initial db creation")]
+    [Migration("20230206220731_Initial db creation")]
     partial class Initialdbcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

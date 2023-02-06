@@ -6,6 +6,16 @@
 	<div>
 		<h1>Game Library</h1>
 		<h2>Games Left: @ViewBag.GameCount</h2>
+		<div>
+		<form class="d-flex" method="post" asp-controller="Home" asp-action="Search">
+			<input name="key" class="form-control me-sm-2" type="search" placeholder="Search">
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		<br/>
+		<a asp-action="Create" asp-controller="Home" class="btn btn-outline-secondary">
+			<i class="bi bi-plus-circle-fill"></i> Add Game
+		</a>
+		</div>
 		@* List of Games:
 			Don't Starve Together,
 			Sea of Thieves,

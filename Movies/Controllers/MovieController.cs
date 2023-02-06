@@ -8,7 +8,14 @@ namespace Movies.Controllers
     public class MovieController : Controller
     {
 
-        IDataAccessLayer dal = new MovieListDAL();
+        // IDataAccessLayer dal = new MovieListDAL();
+
+        IDataAccessLayer dal;
+
+        public MovieController(IDataAccessLayer indal)
+        {
+            dal = indal;
+        }
 
         public IActionResult Index()
         {

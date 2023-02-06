@@ -10,7 +10,7 @@ else
 		<div class="col">
 			<div class="card bg-secondary mb-3" style="max-width: 40rem;">
 				<div class="card-body">
-					<img src="~/images/@Model.Image" width="300" height="240"/>
+					<img src="@Model.Image" width="300" height="240"/>
 				</div>
 			</div>
 		</div>
@@ -25,6 +25,14 @@ else
 						Genre - @Model.Genre<br/>
 						ESRB - @Model.ESRB
 					</p>
+					<br/>
+					<a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mx-2">
+						<i class="bi bi-caret-right-fill"></i> Edit
+					</a>
+					<a asp-controller="Home" asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger mx-2">
+						<i class="bi bi-file-x "></i> Remove
+					</a>
+					<br/>
 						@if(Model.Available){
 							<form asp-controller="Home" asp-route-id="@Model.Id" asp-action="GameLibrary" method="post">
 								<div>
