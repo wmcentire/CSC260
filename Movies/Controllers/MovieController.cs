@@ -105,6 +105,11 @@ namespace Movies.Controllers
 
             return View("MultMovies", dal.GetMovies().Where(c => c.Title.ToLower().Contains(key.ToLower())));
         }
+
+        public IActionResult Filter(string Genre, string mparating)
+        {
+            return View("MultMovies", dal.FilterMovies(Genre, mparating));
+        }
     }
 }
 

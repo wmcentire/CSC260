@@ -24,6 +24,7 @@ namespace Movies.Models
         public DateTime? ReleaseDate { get; set; }
         public string? Image { get; set; }
         public string? Genre { get; set; }
+        public string? MPARating { get; set; } = "Not Rated";
 
         public Movie()
         {

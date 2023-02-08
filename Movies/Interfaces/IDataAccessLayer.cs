@@ -9,7 +9,8 @@ namespace Movies.Interfaces
         void AddMovie(Movie movie);
         void RemoveMovie(int? id);
         Movie GetMovieById(int? id);
-        int GetMovieByMovie(Movie movie);
+        //int GetMovieByMovie(Movie movie);
         void EditMovie(Movie movie);
+        IEnumerable<Movie> FilterMovies(string genre, string mparating);
     }
 }

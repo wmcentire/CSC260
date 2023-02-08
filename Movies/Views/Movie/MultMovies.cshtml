@@ -6,6 +6,12 @@
     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 </form>
 
+<form class="d-flex" asp-controller="Movie" asp-action="Filter" method="post">
+    <input name="genre" class="form-control me-sm-2" placeholder="genre" />
+    <input name="mparating" class="form-control me-sm-2" placeholder="mparating" />
+    <button type="submit" class="btn btn-outline-success">Filter</button>
+</form>
+
 <a asp-action="Create" asp-controller="Movie" class="btn btn-outline-secondary">
     <i class="bi bi-plus-circle-fill"></i> Add Movies
 </a>
