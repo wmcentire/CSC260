@@ -1,3 +1,6 @@
+using GameLibrary.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace GameLibrary
 {
     public class Program
@@ -5,6 +8,8 @@ namespace GameLibrary
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

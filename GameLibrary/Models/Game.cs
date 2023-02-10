@@ -5,8 +5,8 @@ namespace GameLibrary.Models
 {
     public class Game
     {
-        private static int nextID = 0;
-        public int? Id { get; set; } = nextID++;
+        [Key]
+        public int? Id { get; set; }
         [Required(ErrorMessage = "A game must have a title.")]
         [MaxLength(100, ErrorMessage = "The title is too long.")]
         public string Title { get; set; } = "[NO TITLE]";
