@@ -7,7 +7,6 @@ namespace GameLibrary.Interfaces
         void AddGame(Game game);
         void RemoveGame(int? id);
         Game GetGameById(int? id);
-        int GetGameByGame(Game Game);
         void EditGame(Game Game);
         IEnumerable<Game> SearchForGames(string key);
     }

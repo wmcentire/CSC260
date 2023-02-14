@@ -5,7 +5,7 @@ namespace GameLibrary.Data
 {
     public class GameListDAL : IDataAccessLayer
     {
-        public static List<Game> games = new List<Game> {
+        /*public static List<Game> games = new List<Game> {
             new Game("Dwarf Fortress",
                     26.99,
                     4.5f,
@@ -43,49 +43,52 @@ namespace GameLibrary.Data
                     "E10+")
 
 
-        };
+        //};*/
+
+        private AppDbContext db;
+
+        public GameListDAL(AppDbContext indb)
+        {
+            db = indb;
+        }
+
         public void AddGame(Game game)
         {
-            games.Add(game);
+            db.games.Add(game);
+            db.SaveChanges();
         }
 
         public void EditGame(Game game)
         {
-            int i;
-            i = GetGameByGame(game);
-            games[i] = game;
-        }
-
-        public int GetGameByGame(Game Game)
-        {
-            return games.FindIndex(x => x.Id == Game.Id);
-
+            db.games.Update(game);
+            db.SaveChanges();
         }
 
         public Game GetGameById(int? id)
         {
-            return games.Where(m => m.Id == id).FirstOrDefault();
+            return db.games.Where(m => m.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Game> GetCollection()
         {
-            return games;
+            return db.games.OrderBy(g => g.Rating).ToList(); ;
         }
 
         public void RemoveGame(int? id)
         {
             Game game = GetGameById(id);
-            games.Remove(game);
+            db.games.Remove(game);
+            db.SaveChanges();
         }
 
         public IEnumerable<Game> SearchForGames(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
-                return games;
+                return db.games;
             }
 
-            return games.Where(c => c.Title.ToLower().Contains(key.ToLower()));
+            return db.games.Where(c => c.Title.ToLower().Contains(key.ToLower()));
         }
     }
 }

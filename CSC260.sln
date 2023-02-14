@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies", "Movies\Movies.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLibrary", "GameLibrary\GameLibrary.csproj", "{3F4718FB-7164-4CEF-815B-3D5F79EF4FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationExercise", "ValidationExercise\ValidationExercise.csproj", "{2E71479A-CD16-482E-82FC-FE6937F25620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationExercise", "ValidationExercise\ValidationExercise.csproj", "{2E71479A-CD16-482E-82FC-FE6937F25620}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routing Exercise", "Routing Exercise\Routing Exercise.csproj", "{D4259A14-6423-4FA0-AA90-B77B61DC03EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routing Exercise", "Routing Exercise\Routing Exercise.csproj", "{D4259A14-6423-4FA0-AA90-B77B61DC03EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDPractice", "IDPractice\IDPractice.csproj", "{1CE818AD-5A26-4091-8E33-34E32CDC5308}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D4259A14-6423-4FA0-AA90-B77B61DC03EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4259A14-6423-4FA0-AA90-B77B61DC03EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4259A14-6423-4FA0-AA90-B77B61DC03EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE818AD-5A26-4091-8E33-34E32CDC5308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE818AD-5A26-4091-8E33-34E32CDC5308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE818AD-5A26-4091-8E33-34E32CDC5308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE818AD-5A26-4091-8E33-34E32CDC5308}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
