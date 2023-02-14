@@ -10,8 +10,13 @@ namespace GameLibrary.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        IDataAccessLayer dal = new GameListDAL();
-        
+        IDataAccessLayer dal;
+
+        public HomeController(IDataAccessLayer indal)
+        {
+            dal = indal;
+        }
+
         private static int avb = 5;
 
 

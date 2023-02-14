@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-IDPractice-7D3C4B33-E59A-4FA1-AFEA-22FC2138544F</UserSecretsId>
+    <UserSecretsId>aspnet-IDPractice-6A81A37C-5282-45F1-949D-44DDA3AC85FB</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
