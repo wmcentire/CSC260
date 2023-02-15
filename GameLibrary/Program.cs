@@ -1,5 +1,6 @@
 using GameLibrary.Data;
 using Microsoft.EntityFrameworkCore;
+using GameLibrary.Interfaces;
 
 namespace GameLibrary
 {
@@ -9,7 +10,9 @@ namespace GameLibrary
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddTransient<IDataAccessLayer, GameListDAL>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
