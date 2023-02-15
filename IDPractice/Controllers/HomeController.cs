@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace IDPractice.Controllers
 {
@@ -21,7 +22,11 @@ namespace IDPractice.Controllers
         [Authorize]
         public IActionResult Privacy()
         {
-            return View();
+            string x;
+            x = User.FindFirstValue(ClaimTypes.Name);
+            x = User.FindFirstValue(ClaimTypes.Email);
+            x = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return Content(x);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
