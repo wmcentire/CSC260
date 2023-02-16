@@ -137,4 +137,9 @@ using GameLibrary.Data;
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Filter(string Platform, string esrb)
+        {
+            return View("GameLibrary", dal.FilterMovies(Platform, esrb));
+        }
     }
