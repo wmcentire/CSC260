@@ -9,5 +9,7 @@ namespace GameLibrary.Interfaces
         Game GetGameById(int? id);
         void EditGame(Game Game);
         IEnumerable<Game> SearchForGames(string key);
+        public IEnumerable<Game> FilterGames(string platform, string esrb);
+        
     }
 }

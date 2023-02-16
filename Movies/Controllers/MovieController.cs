@@ -2,6 +2,8 @@
 using Movies.Models;
 using Movies.Interfaces;
 using Movies.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Movies.Controllers
 {
@@ -47,6 +49,7 @@ namespace Movies.Controllers
 
             return View(foundMovie);
         }
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -61,6 +64,7 @@ namespace Movies.Controllers
             }
             if (ModelState.IsValid)
             {
+                m.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 dal.AddMovie(m);
                 TempData["success"] = "Movie " + m.Title + " added";
                 return RedirectToAction("MultMovies", "Movie");

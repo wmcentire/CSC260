@@ -140,6 +140,6 @@ using GameLibrary.Data;
 
         public IActionResult Filter(string Platform, string esrb)
         {
-            return View("GameLibrary", dal.FilterMovies(Platform, esrb));
+            return View("GameLibrary", dal.FilterGames(Platform, esrb));
         }
     }

@@ -90,5 +90,33 @@ namespace GameLibrary.Data
 
             return db.games.Where(c => c.Title.ToLower().Contains(key.ToLower()));
         }
+
+        public IEnumerable<Game> FilterGames(string platform, string esrb)
+        {
+            if (platform == null)
+            {
+                platform = "";
+            }
+            if (esrb == null)
+            {
+                esrb = "";
+            }
+
+            if (platform == "" && esrb == "")
+            {
+                return GetCollection();
+            }
+
+            IEnumerable<Game> lstGames = GetCollection().Where
+                (g => (!string.IsNullOrEmpty(g.Platform)) && g.Platform.ToLower().Contains(platform.ToLower())).ToList();
+            IEnumerable<Game> lstGames2 = lstGames.Where
+                (g => (!string.IsNullOrEmpty(g.ESRB)) && g.ESRB.ToLower().Equals(esrb.ToLower())).ToList();
+
+            if (lstGames2.Count() <= 0)
+            {
+                return lstGames;
+            }
+            return lstGames2;
+        }
     }
 }

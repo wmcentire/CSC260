@@ -26,6 +26,8 @@ namespace Movies.Models
         public string? Genre { get; set; }
         public string? MPARating { get; set; } = "Not Rated";
 
+        public string? UserID { get; set; }
+
         public Movie()
         {
             //required            
