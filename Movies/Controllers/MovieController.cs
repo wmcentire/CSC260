@@ -34,7 +34,7 @@ namespace Movies.Controllers
             Movie m = new Movie("Tron",1982,5f);
             return View(m);
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(int? id)
         {
