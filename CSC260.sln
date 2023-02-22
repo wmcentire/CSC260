@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationExercise", "Valid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routing Exercise", "Routing Exercise\Routing Exercise.csproj", "{D4259A14-6423-4FA0-AA90-B77B61DC03EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDPractice", "IDPractice\IDPractice.csproj", "{499E72BF-9773-4B94-8ABC-7B35C6652488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDPractice", "IDPractice\IDPractice.csproj", "{499E72BF-9773-4B94-8ABC-7B35C6652488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAM_SocialMediaSite", "WAM_SocialMediaSite\WAM_SocialMediaSite.csproj", "{2E042E60-8772-4FCC-8530-1B42B1641CD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{499E72BF-9773-4B94-8ABC-7B35C6652488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{499E72BF-9773-4B94-8ABC-7B35C6652488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{499E72BF-9773-4B94-8ABC-7B35C6652488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E042E60-8772-4FCC-8530-1B42B1641CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E042E60-8772-4FCC-8530-1B42B1641CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E042E60-8772-4FCC-8530-1B42B1641CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E042E60-8772-4FCC-8530-1B42B1641CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
