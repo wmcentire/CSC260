@@ -1,0 +1,10 @@
+﻿@model User
+
+<div class="userImageFrame">
+	<img src="@Model.userImageLink"/>
+</div>
+<div>
+	<a asp-controller="Home" asp-action="UserPage" asp-route-id="@Model.Id" class="btn btn-primary mx-2">
+		<i class="bi bi-caret-right-fill"></i> View User
+	</a>
+</div>

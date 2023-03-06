@@ -1,0 +1,27 @@
+﻿@model PostClass
+
+
+@if (Model == null)
+{
+    <h2>No movie provided</h2>
+}
+else
+{
+    <h3>@Model.Title</h3>
+    <img src="@Model.ImageLink" width="300" height="240" />
+    <div>
+        <p>@Model.Description</p>
+    </div>
+    <div>
+        <p>@Model.Tag</p>
+    </div>
+    @if (Model.postUser == Model.lookUser) 
+    {
+        <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.postUser" class="btn btn-primary mx-2">
+            <i class="bi bi-caret-right-fill"></i> Edit
+        </a>
+        <a asp-controller="Movie" asp-action="Remove" asp-route-id="@Model.postUser" class="btn btn-outline-danger mx-2">
+            <i class="bi bi-file-x "></i> Remove
+        </a>
+    }
+}

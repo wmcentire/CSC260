@@ -1,0 +1,24 @@
+﻿@model IEnumerable<User>
+
+@if (Model == null)
+{
+	<h1>There are no users.</h1>
+}
+else
+{
+	<div>
+		<h1>Users</h1>
+		<div>
+			<form class="d-flex" method="post" asp-controller="Home" asp-action="Search">
+				<input name="key" class="form-control me-sm-2" type="search" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<br />
+			
+		</div>
+		@foreach (User user in Model)
+		{
+			<partial name="_UserIconPartial.cshtml" for="@user" />
+		}
+	</div>
+}

@@ -64,7 +64,7 @@ namespace Movies.Controllers
             }
             if (ModelState.IsValid)
             {
-                m.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                m.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier); // ID
                 dal.AddMovie(m);
                 TempData["success"] = "Movie " + m.Title + " added";
                 return RedirectToAction("MultMovies", "Movie");

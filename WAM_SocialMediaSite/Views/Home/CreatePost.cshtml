@@ -1,0 +1,37 @@
+﻿@model PostClass
+@* p=padding pb= padding bottom m=margin mt = margin top *@
+<form asp-controller="Home" asp-action="CreatePost" method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Create Post
+            </h2>
+            <hr />
+            <input type="hidden" value="ViewBag.UserID" asp-for="postUser" />
+            <input type="hidden" value="ViewBag.UserID" asp-for="lookUser" />
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="error-messages"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImageLink"></label>
+            <input asp-for="ImageLink" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tag"></label>
+            <input asp-for="Tag" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Post
+        </button>
+        <a asp-controller="Home" asp-action="Thread" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

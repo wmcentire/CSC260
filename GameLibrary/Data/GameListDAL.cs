@@ -71,7 +71,7 @@ namespace GameLibrary.Data
 
         public IEnumerable<Game> GetCollection()
         {
-            return db.games.OrderBy(g => g.Rating).ToList(); ;
+            return db.games.OrderBy(g => g.Rating).ToList(); 
         }
 
         public void RemoveGame(int? id)

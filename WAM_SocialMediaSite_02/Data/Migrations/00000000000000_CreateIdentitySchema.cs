@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace WAM_SocialMediaSite.Data.Migrations
+namespace WAM_SocialMediaSite_02.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PostClass>
+
+<div>
+	<h3 class="card-header">
+        Welcome to the Thread!
+        <br/>
+        All users post here.
+	</h3>
+    <a asp-controller="Home" asp-action="CreatePost" asp-route-id="@ViewBag.UserID" class="btn btn-primary mx-2">
+        <i class="bi bi-caret-right-fill"></i> Post
+    </a>
+
+    <div>
+        @foreach (PostClass post in Model)
+        {
+            <partial name="_ImagePost.cshtml" for="@post" />
+        }
+    </div>
+
+</div>
