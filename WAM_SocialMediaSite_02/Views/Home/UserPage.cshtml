@@ -7,18 +7,24 @@
 }
 else
 {
-    <h3>@Model.Name</h3>
-    <div class="imageFrame">
-        <img src="@Model.userImageLink"/>
+    <h2>@Model.Name</h2>
+    <div>
+        <img src="@Model.userImageLink" class="imageFrame ProfileImage"/>
+    </div>
+    <div>
+        <h3 class="">About @Model.Name</h3>
+        <p>
+            @Model.Password
+        </p>
     </div>
     <div>
         <div>
-            @if(Model.Id == ViewBag.UserID)
+            @if(Model.profileID == ViewBag.UserID)
             {
-                 <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mx-2">
+                 <a asp-controller="Home" asp-action="EditUserPage" asp-route-id="@Model.profileID" class="btn btn-primary mx-2">
                     <i class="bi bi-caret-right-fill"></i> Edit
                 </a>
-                <a asp-controller="Movie" asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger mx-2">
+                <a asp-controller="Movie" asp-action="RemoveUserPage" asp-route-id="@Model.profileID" class="btn btn-outline-danger mx-2">
                     <i class="bi bi-file-x "></i> Remove
                 </a>
             }

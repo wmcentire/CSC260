@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using WAM_SocialMediaSite_02.Models;
 using WAM_SocialMediaSite_02.Interface;
+using System.Reflection.Metadata.Ecma335;
 
 namespace WAM_SocialMediaSite_02.Controllers
 {
@@ -34,19 +35,77 @@ namespace WAM_SocialMediaSite_02.Controllers
         [Authorize]
         public IActionResult UserPage(string id)
         {
+            if (userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)) == null)
+            {
+                return RedirectToAction("EditUserPage", "Home");
+            }
             string x;
             x = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.UserID = x ?? string.Empty;
             if (ViewBag.UserID == string.Empty)
             {
-                return View(userDal.GetUserById(id));
+                return RedirectToAction("EditUserPage", "Home");
             }
             return View(userDal.GetUserById(x));
         }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult EditUserPage(string id)
+        {
+            ViewBag.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.Email = User.FindFirstValue(ClaimTypes.Email);
+
+            if (userDal.GetUserById(id) == null)
+            {
+                if(userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)) == null)
+                {
+                    ViewBag.IsUser = false;
+
+                    ViewBag.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    ViewBag.Email = User.FindFirstValue(ClaimTypes.Email);
+                    ViewBag.Password = "lmao you thought";
+                    User user = new User();
+                    user.profileID = id;
+                    return View(user);
+                }
+                else
+                {
+                    ViewBag.IsUser = true;
+
+                    return View(userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                }
+
+            }
+            ViewBag.IsUser = true;
+
+
+            return View(userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult EditUserPage(User user)
+        {
+            if (userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)) == null)
+            {
+                userDal.AddUser(user);
+            }
+            else
+            {
+                userDal.EditUser(user);
+            }
+
+            return RedirectToAction("UserPage", "Home");
+        }
+
         [Authorize]
         [HttpGet]
         public IActionResult CreatePost()
         {
+            if (userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)) == null)
+            {
+                return RedirectToAction("EditUserPage", "Home");
+            }
             string x;
             x = User.FindFirstValue(ClaimTypes.NameIdentifier); //id
             ViewBag.UserID = x ?? string.Empty;
@@ -67,8 +126,13 @@ namespace WAM_SocialMediaSite_02.Controllers
         }
 
         [Authorize]
+        //[Route("")]
         public IActionResult Thread()
         {
+            if (userDal.GetUserById(User.FindFirstValue(ClaimTypes.NameIdentifier)) == null)
+            {
+                return RedirectToAction("EditUserPage", "Home");
+            }
             ViewBag.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (PostClass post in dal.GetPosts())
             {

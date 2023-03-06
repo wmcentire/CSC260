@@ -6,7 +6,7 @@ namespace WAM_SocialMediaSite_02.Models
     public class User
     {
         [Key] 
-        public string Id { get; set; }
+        public string profileID { get; set; }
 
         [Required(ErrorMessage = "You did not input a name.")]
         public string Name { get; set; }

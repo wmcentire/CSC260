@@ -14,6 +14,7 @@ namespace WAM_SocialMediaSite_02.Data
         public void AddUser(User user)
         {
             db.users.Add(user);
+            db.SaveChanges();
         }
 
         public void EditUser(User user)
@@ -24,7 +25,7 @@ namespace WAM_SocialMediaSite_02.Data
 
         public User GetUserById(string? id)
         {
-            return db.users.Where(m => m.Id == id).FirstOrDefault();
+            return db.users.Where(m => m.profileID == id).FirstOrDefault();
         }
 
         public IEnumerable<User> GetUsers()

@@ -15,6 +15,7 @@ namespace WAM_SocialMediaSite_02.Data
         public void AddPost(PostClass post)
         {
             db.Add(post);
+            db.SaveChanges();
         }
 
         public void EditPost(PostClass post)
@@ -29,7 +30,6 @@ namespace WAM_SocialMediaSite_02.Data
             {
                 return GetPosts();
             }
-
             IEnumerable<PostClass> lstPosts = GetPosts().Where
                 (g => (!string.IsNullOrEmpty(g.Tag)) && g.Tag.ToLower().Contains(tag.ToLower())).ToList();
             return lstPosts;

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WAM_SocialMediaSite_02.Data;
 
@@ -11,9 +12,10 @@ using WAM_SocialMediaSite_02.Data;
 namespace WAM_SocialMediaSite_02.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230306041115_update primary keys")]
+    partial class updateprimarykeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,7 +258,7 @@ namespace WAM_SocialMediaSite_02.Data.Migrations
 
             modelBuilder.Entity("WAM_SocialMediaSite_02.Models.User", b =>
                 {
-                    b.Property<string>("profileID")
+                    b.Property<string>("userId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
@@ -275,7 +277,7 @@ namespace WAM_SocialMediaSite_02.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("profileID");
+                    b.HasKey("userId");
 
                     b.ToTable("users");
                 });
